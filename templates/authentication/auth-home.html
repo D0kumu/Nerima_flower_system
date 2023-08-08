@@ -1,4 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'authentication/base.html' %}
+
+{% block content %}
     <ul>
         <li>
             <a href="/auth/signup">Signup</a>
@@ -10,3 +12,4 @@
             <a href="/auth/signout">logout</a>
         </li>
     </ul>
+    {% endblock content %}

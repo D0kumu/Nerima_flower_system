@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'authentication/base.html' %}
 
-
+{% block content %}
     {% if messages %}
     {% for message in messages %}
     {{ message }}
@@ -30,3 +30,4 @@
         
 
     </form>
+    {% endblock content %}
