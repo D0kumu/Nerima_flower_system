@@ -33,9 +33,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'authentication',
     'mainApp',
-    'tailwind',
-    'theme',
-    'django_browser_reload',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,7 +44,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    "django_browser_reload.middleware.BrowserReloadMiddleware", #for tailwind css
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -62,7 +58,7 @@ ROOT_URLCONF = 'flowerGirl.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/ "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

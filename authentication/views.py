@@ -4,7 +4,7 @@ from  django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 
 def auth(request):
-    return render(request, "auth-home.html")
+    return render(request, "authentication/auth-home.html")
 
 def signin(request):
     if request.method == "POST":
@@ -16,10 +16,10 @@ def signin(request):
         if user is not None:
             login(request, user)
             fname = user.first_name
-            return render(request, 'home.html', {"fname": fname})
+            return render(request, 'main/home.html', {"fname": fname})
         else:
             messages.error(request, "You entered bad credentials!!")
-    return render(request, "login.html")
+    return render(request, "authentication/login.html")
 
 def signup(request):
     if request.method == "POST":
@@ -38,7 +38,7 @@ def signup(request):
         login(request, newUser)
         messages.success(request, "your account has been created successfully")
         return redirect('/auth')
-    return render(request, "signup.html")
+    return render(request, "authentication/signup.html")
 
 def signout(request):
     logout(request)

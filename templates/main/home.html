@@ -1,0 +1,29 @@
+{% extends 'main/base.html' %}
+
+    {% block content %}  
+
+    
+    <p class="p-10 text-red-500 hover:text-white hover:bg-black">Hello world</p>
+
+
+			<section class="flex items-center justify-center h-screen">
+				<h1 class="text-5xl">Django + Tailwind = ❤️</h1>
+                {% if messages %}
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
+    {% endif %}
+    {% if user.is_authenticated %}
+    <h3>hello {{ fname }}</h3>
+    <p>you are logged in</p>
+    {% endif %}
+    <p class="text-5xl">Welcome to the home page</p>
+                <ul>
+                    <li>
+                        <a href="/auth">Get started</a>
+                    </li>
+                    
+                </ul>
+			</section>
+    {% endblock content %}
+    
