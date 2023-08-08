@@ -1,11 +1,6 @@
 {% extends 'main/base.html' %}
 
     {% block content %}  
-
-    
-    <p class="p-10 text-red-500 hover:text-white hover:bg-black">Hello world</p>
-
-
 			<section class="flex items-center justify-center h-screen">
 				<h1 class="text-5xl">Welcome to flower girl ❤️</h1>
                 <br>
@@ -20,10 +15,13 @@
     {% endif %}
     <p class="text-5xl mx-5">this is  the home page</p>
                 <ul>
-                    <li>
-                        <a href="/auth">Get started</a>
-                    </li>
-                    
+                    <div class="p-10 m-4 bg-gray-50 hover:bg-red">
+                        <li>
+                            <a class=" text-red-500 hover:text-white " href="/auth">Get started</a>
+                        </li>
+    
+                    </div>
+                                        
                 </ul>
 			</section>
     {% endblock content %}
