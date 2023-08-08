@@ -1,26 +1,27 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from  django.contrib import messages
-# Create your views here.
+from django.contrib.auth import authenticate, login, logout
 
 def auth(request):
     return render(request, "auth-home.html")
 
-def login(request):
-    
+def signin(request):
     if request.method == "POST":
-        email = request.POST["email"]
+        username = request.POST["username"]
         password = request.POST["password"]
 
-        if User.check_password == password:
-            print("User.email:  ",  User.email)
-            messages.success(request, "you have been logedin successfully")
-            return redirect(request,"/home")
+        user = authenticate(request, username=username, password=password)
+       
+        if user is not None:
+            login(request, user)
+            fname = user.first_name
+            return render(request, 'home.html', {"fname": fname})
+        else:
+            messages.error(request, "You entered bad credentials!!")
     return render(request, "login.html")
 
-
 def signup(request):
-
     if request.method == "POST":
         username = request.POST["username"]
         email = request.POST["email"]
@@ -29,16 +30,18 @@ def signup(request):
         password1 = request.POST["password1"]
         password2 = request.POST["password2"]
 
-        newUser = User(username=username, email=email, password=password1)
-        newUser.firstname = firstname
-        newUser.lastname = lastname      
+        newUser = User.objects.create_user(username,email, password1)
+        newUser.first_name = firstname
+        newUser.last_name = lastname      
 
-        newUser.save()  
-
+        newUser.save()
+        login(request, newUser)
         messages.success(request, "your account has been created successfully")
-       
-        
+        return redirect('/auth')
     return render(request, "signup.html")
 
-    
+def signout(request):
+    logout(request)
+    messages.success(request, "you are logged out successfully")
+    return redirect('home')
 

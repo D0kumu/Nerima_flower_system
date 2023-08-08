@@ -1,12 +1,24 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="{% static 'style.css' %}">
+    <title>flowergirl</title>
 </head>
-<body>
-    <h1>Welcome to the home page</h1>
+<body class="bg-brightRed">
+    {% if messages %}
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
+    {% endif %}
+    {% if user.is_authenticated %}
+    <h3>hello {{ fname }}</h3>
+    <p>you are logged in</p>
+    {% endif %}
+    <p class="text-3xl m-0">Welcome to the home page</p>
+    
     <ul>
         <li>
             <a href="/auth">Get started</a>

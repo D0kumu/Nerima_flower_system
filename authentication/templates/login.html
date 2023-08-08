@@ -12,10 +12,10 @@
     {% endfor %}
     {% endif %}
 
-    <form action="/auth/login" method="post" >
+    <form action="/auth/signin" method="post" >
         {% csrf_token %}
-        <label for="">Email</label>
-        <input type="email" name="email" placeholder="Enter your Email">
+        <label for="">Username</label>
+        <input type="text" name="username" placeholder="Enter your Username">
         <br>
         <label for="">Password</label>
         <input type="password" name="password" placeholder="Enter your Password">
